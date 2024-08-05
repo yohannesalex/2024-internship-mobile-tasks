@@ -30,15 +30,15 @@ class Product_manager {
   void editProduct(
       String name, String newName, String newDescription, double newPrice) {
     if (!cart.containsKey(name)) {
-      print("product with the this nmae is does not exixt");
+      print("product with  the name ${name}  does not exixt");
     } else {
       cart[name]!.name = newName;
       cart[name]!.description = newDescription;
       cart[name]!.price = newPrice;
       Product cur = cart.remove(name)!;
       cart[newName] = cur;
+      print("Product edited!");
     }
-    print("Product edited");
   }
 
   void deleteProdudct(String name) {

@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 import '../widget/card.dart';
 
@@ -97,8 +94,6 @@ class _SearchState extends State<Search> {
                   height: 20,
                 ),
                 p.displayCard(),
-                p.displayCard(),
-
                 const SizedBox(
                   height: 10,
                 ),
@@ -121,7 +116,8 @@ class _SearchState extends State<Search> {
                                 ),
                                 Container(
                                   height: 35,
-                                  margin: const EdgeInsets.fromLTRB(22, 0, 15, 0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(22, 0, 15, 0),
                                   child: const TextField(
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
@@ -144,12 +140,11 @@ class _SearchState extends State<Search> {
                                 textAlign: TextAlign.start,
                               ),
                               RangeSlider(
-                                values: RangeValues(15,95), // Initial value
+                                values:
+                                    const RangeValues(15, 95), // Initial value
                                 min: 10.0, // Minimum value
                                 max: 100.0, // Maximum value
-                                onChanged: (value) {
-                                  var value = _value;
-                                },
+                                onChanged: (value) {},
                               ),
                               const SizedBox(height: 5),
                             ],

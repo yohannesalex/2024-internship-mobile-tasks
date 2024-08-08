@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yohannes/widget/size.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key});
@@ -115,14 +116,8 @@ class _DetailState extends State<Detail> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Text("39",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Text("40",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                      ),
+                      shoeSize.displaySize(39),
+                      shoeSize.displaySize(40),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -131,18 +126,9 @@ class _DetailState extends State<Detail> {
                         padding: const EdgeInsets.all(15),
                         child: const Text("41",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Text("42",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Text("43",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Text("44",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                      )
+                      shoeSize.displaySize(42),
+                      shoeSize.displaySize(43),
+                      shoeSize.displaySize(44)
                     ],
                   ),
                   const SizedBox(height: 20,),

@@ -143,10 +143,10 @@ class _SearchState extends State<Search> {
                                 style: TextStyle(fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.start,
                               ),
-                              Slider(
-                                value: 20.0, // Initial value
+                              RangeSlider(
+                                values: RangeValues(15,95), // Initial value
                                 min: 10.0, // Minimum value
-                                max: 200.0, // Maximum value
+                                max: 100.0, // Maximum value
                                 onChanged: (value) {
                                   var value = _value;
                                 },

@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CardShoes {
-  displayCard() {
+  displayCard(name, category, price, description) {
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
@@ -29,27 +29,33 @@ class CardShoes {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                margin: EdgeInsets.fromLTRB(15, 20, 15, 10),
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Derby Leather Shoes",
+                          "$name",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 20),
                         ),
-                        Text("\$120",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 15))
+                        Row(children: [
+                          Text(
+                            "\$",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          Text("$price",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15)),
+                        ])
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Men's shoes",
+                          "$category",
                           style: TextStyle(fontWeight: FontWeight.w300),
                         ),
                         Row(
@@ -72,4 +78,4 @@ class CardShoes {
   }
 }
 
-CardShoes p = CardShoes();
+CardShoes cardHome = CardShoes();

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:yohannes/model/product_manager.dart';
+
+import 'package:yohannes/pages/edit.dart';
+import 'package:yohannes/widget/detail_card.dart';
 import 'package:yohannes/widget/size.dart';
 
-class Detail extends StatefulWidget {
-  const Detail({super.key});
+class Detail extends StatelessWidget {
+  final String productName;
 
-  @override
-  State<Detail> createState() => _DetailState();
-}
+  const Detail({super.key, required this.productName});
 
-class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,76 +18,11 @@ class _DetailState extends State<Detail> {
           children: [
             Stack(
               children: [
-                Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: SizedBox(
-                      width: 500,
-                      height: 320,
-                      child: Column(
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 280 / 160,
-                            child: SizedBox(
-                              width: 366,
-                              child: FittedBox(
-                                  fit: BoxFit.fitWidth,
-                                  // Scale the image to fit the width
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0),
-                                      child: Image.asset(
-                                        'Assets/shoes.jpg',
-                                      ))),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                            child: const Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Men's shoes",
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.w300),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.amberAccent,
-                                        ),
-                                        Text("  (4.5)")
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Derby Leather Shoes",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 20),
-                                    ),
-                                    Text("\$120",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      )),
-                ),
+                detailItem.displayDetailCard(
+                    productName,
+                    cart[productName]?.category,
+                    cart[productName]?.price,
+                    cart[productName]?.description),
                 Positioned(
                     top: 40,
                     left: 20,
@@ -97,7 +33,9 @@ class _DetailState extends State<Detail> {
                           borderRadius: BorderRadius.circular(150),
                           color: Colors.white),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         icon: const Icon(
                           Icons.arrow_back_ios_outlined,
                           color: Colors.blue,
@@ -110,9 +48,10 @@ class _DetailState extends State<Detail> {
               margin: const EdgeInsets.fromLTRB(20, 5, 20, 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-        
                 children: [
-                  const Text("Size: ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                  const Text("Size: ",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -124,37 +63,68 @@ class _DetailState extends State<Detail> {
                           color: const Color(0xFF3F51F3),
                         ),
                         padding: const EdgeInsets.all(15),
-                        child: const Text("41",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                        child: const Text("41",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w500)),
                       ),
                       shoeSize.displaySize(42),
                       shoeSize.displaySize(43),
                       shoeSize.displaySize(44)
                     ],
                   ),
-                  const SizedBox(height: 20,),
-                  const Text("A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe"),
-                  const SizedBox(height: 30,),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text("${cart[productName]?.description}"),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      OutlinedButton(onPressed: (){},style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Colors.red),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                          // Button shape
-                        ),
-
-                      ), child: const Text("DELETE", style: TextStyle(color: Colors.red),),),
-                      ElevatedButton(onPressed: (){},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF3F51F3),
-
+                      OutlinedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/');
+                          cartManager.deleteProdudct(productName);
+                        },
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Colors.red),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                             // Button shape
                           ),
-
-                        ), child: const Text("UPDATE", style: TextStyle(color: Colors.white),),)
+                        ),
+                        child: const Text(
+                          "DELETE",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Edit(
+                                editName: cart[productName]!.name,
+                                editCategory: cart[productName]!.category,
+                                editPrice: cart[productName]!.price,
+                                editDescription: cart[productName]!.description,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF3F51F3),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            // Button shape
+                          ),
+                        ),
+                        child: const Text(
+                          "UPDATE",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
                     ],
                   )
                 ],

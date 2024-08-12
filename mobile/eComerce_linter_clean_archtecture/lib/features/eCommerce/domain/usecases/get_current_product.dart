@@ -7,7 +7,7 @@ import '../repositories/product_repository.dart';
 class GetCurrentProductUsecase {
   final ProductRepository productRepository;
   GetCurrentProductUsecase(this.productRepository);
-  Future<Either<Failure, ProductEntity>> execute(String productId) {
+  Future<Either<Failure, ProductEntity>> call(String productId) {
     return productRepository.getCurrentProduct(productId);
   }
 }

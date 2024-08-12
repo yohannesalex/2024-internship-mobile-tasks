@@ -31,11 +31,12 @@ void main() {
   test('should edit the product from the repository', () async {
     //arrange
 
-    when(mockProductRepository.editProduct(testProductdetail))
+    when(mockProductRepository.editProduct(any))
         .thenAnswer((_) async => const Right(updatedTestProductDetail));
     //act
-    final result = await editProductUsecase.execute(testProductdetail);
+    final result = await editProductUsecase(testProductdetail);
     //assert
     expect(result, const Right(updatedTestProductDetail));
+    verify(mockProductRepository.editProduct(testProductdetail));
   });
 }

@@ -18,11 +18,12 @@ void main() {
   test('should delete the product from the repository', () async {
     //arrange
 
-    when(mockProductRepository.deleteProduct(testProductId))
+    when(mockProductRepository.deleteProduct(any))
         .thenAnswer((_) async => const Right(null));
     //act
-    final result = await deleteProductUsecase.execute(testProductId);
+    final result = await deleteProductUsecase(testProductId);
     //assert
     expect(result, const Right(null));
+    verify(mockProductRepository.deleteProduct(testProductId));
   });
 }

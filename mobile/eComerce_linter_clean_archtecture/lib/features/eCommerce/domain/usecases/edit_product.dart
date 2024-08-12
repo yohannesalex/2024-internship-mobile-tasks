@@ -8,7 +8,7 @@ class EditProductUsecase {
   final ProductRepository productRepository;
   EditProductUsecase(this.productRepository);
 
-  Future<Either<Failure, void>> execute(ProductEntity product) {
+  Future<Either<Failure, void>> call(ProductEntity product) {
     return productRepository.editProduct(product);
   }
 }

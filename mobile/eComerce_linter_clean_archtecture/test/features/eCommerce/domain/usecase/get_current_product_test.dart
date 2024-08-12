@@ -24,11 +24,12 @@ void main() {
   test('should get the product from the repository', () async {
     //arrange
 
-    when(mockProductRepository.getCurrentProduct(testProductId))
+    when(mockProductRepository.getCurrentProduct(any))
         .thenAnswer((_) async => const Right(testProductdetail));
     //act
-    final result = await getCurrentProductUsecase.execute(testProductId);
+    final result = await getCurrentProductUsecase(testProductId);
     //assert
     expect(result, const Right(testProductdetail));
+    verify(mockProductRepository.getCurrentProduct(testProductId));
   });
 }

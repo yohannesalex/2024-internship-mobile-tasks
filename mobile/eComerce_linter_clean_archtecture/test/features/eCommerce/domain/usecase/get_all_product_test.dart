@@ -35,8 +35,9 @@ void main() {
     when(mockProductRepository.getAllProduct())
         .thenAnswer((_) async => const Right(testProductdetail));
     //act
-    final result = await getAllProductUsecase.execute();
+    final result = await getAllProductUsecase();
     //assert
     expect(result, const Right(testProductdetail));
+    verify(mockProductRepository.getAllProduct());
   });
 }

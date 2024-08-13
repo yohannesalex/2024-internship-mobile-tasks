@@ -1,6 +1,6 @@
 import '../../../../core/error/exeptions.dart';
 import '../../../../core/error/failure.dart';
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../../domain/entities/product.dart';
 import 'package:dartz/dartz.dart';
 import '../models/product_model.dart';

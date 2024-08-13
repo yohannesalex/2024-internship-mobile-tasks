@@ -6,6 +6,7 @@ import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_
 import 'package:my_project_name/features/eCommerce/data/data_sources/remote_data_source.dart';
 import 'package:my_project_name/features/eCommerce/data/repositories/product_repository_impl.dart';
 import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @GenerateMocks(
   [
@@ -14,6 +15,7 @@ import 'package:my_project_name/features/eCommerce/domain/repositories/product_r
     ProductLocalDataSource,
     NetworkInfo,
     InternetConnectionChecker,
+    SharedPreferences,
     ProductRepositoryImpl,
   ],
   customMocks: [MockSpec<http.Client>(as: #MockHttpClient)],

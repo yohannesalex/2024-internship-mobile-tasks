@@ -4,15 +4,15 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i10;
-import 'dart:convert' as _i14;
-import 'dart:typed_data' as _i16;
+import 'dart:convert' as _i15;
+import 'dart:typed_data' as _i17;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/http.dart' as _i8;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i15;
+import 'package:mockito/src/dummies.dart' as _i16;
 import 'package:my_project_name/core/error/failure.dart' as _i11;
 import 'package:my_project_name/core/network/network_info.dart' as _i7;
 import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_source.dart'
@@ -22,11 +22,12 @@ import 'package:my_project_name/features/eCommerce/data/data_sources/remote_data
 import 'package:my_project_name/features/eCommerce/data/models/product_model.dart'
     as _i3;
 import 'package:my_project_name/features/eCommerce/data/repositories/product_repository_impl.dart'
-    as _i13;
+    as _i14;
 import 'package:my_project_name/features/eCommerce/domain/entities/product.dart'
     as _i12;
 import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart'
     as _i9;
+import 'package:shared_preferences/shared_preferences.dart' as _i13;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -443,11 +444,192 @@ class MockInternetConnectionChecker extends _i1.Mock
       ) as _i10.Future<_i4.AddressCheckResult>);
 }
 
+/// A class which mocks [SharedPreferences].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSharedPreferences extends _i1.Mock implements _i13.SharedPreferences {
+  MockSharedPreferences() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  Set<String> getKeys() => (super.noSuchMethod(
+        Invocation.method(
+          #getKeys,
+          [],
+        ),
+        returnValue: <String>{},
+      ) as Set<String>);
+
+  @override
+  Object? get(String? key) => (super.noSuchMethod(Invocation.method(
+        #get,
+        [key],
+      )) as Object?);
+
+  @override
+  bool? getBool(String? key) => (super.noSuchMethod(Invocation.method(
+        #getBool,
+        [key],
+      )) as bool?);
+
+  @override
+  int? getInt(String? key) => (super.noSuchMethod(Invocation.method(
+        #getInt,
+        [key],
+      )) as int?);
+
+  @override
+  double? getDouble(String? key) => (super.noSuchMethod(Invocation.method(
+        #getDouble,
+        [key],
+      )) as double?);
+
+  @override
+  String? getString(String? key) => (super.noSuchMethod(Invocation.method(
+        #getString,
+        [key],
+      )) as String?);
+
+  @override
+  bool containsKey(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #containsKey,
+          [key],
+        ),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  List<String>? getStringList(String? key) =>
+      (super.noSuchMethod(Invocation.method(
+        #getStringList,
+        [key],
+      )) as List<String>?);
+
+  @override
+  _i10.Future<bool> setBool(
+    String? key,
+    bool? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setBool,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> setInt(
+    String? key,
+    int? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setInt,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> setDouble(
+    String? key,
+    double? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setDouble,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> setString(
+    String? key,
+    String? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setString,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> setStringList(
+    String? key,
+    List<String>? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setStringList,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> remove(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #remove,
+          [key],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> commit() => (super.noSuchMethod(
+        Invocation.method(
+          #commit,
+          [],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<bool> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i10.Future<bool>.value(false),
+      ) as _i10.Future<bool>);
+
+  @override
+  _i10.Future<void> reload() => (super.noSuchMethod(
+        Invocation.method(
+          #reload,
+          [],
+        ),
+        returnValue: _i10.Future<void>.value(),
+        returnValueForMissingStub: _i10.Future<void>.value(),
+      ) as _i10.Future<void>);
+}
+
 /// A class which mocks [ProductRepositoryImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockProductRepositoryImpl extends _i1.Mock
-    implements _i13.ProductRepositoryImpl {
+    implements _i14.ProductRepositoryImpl {
   MockProductRepositoryImpl() {
     _i1.throwOnMissingStub(this);
   }
@@ -627,7 +809,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i14.Encoding? encoding,
+    _i15.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -658,7 +840,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i14.Encoding? encoding,
+    _i15.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -689,7 +871,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i14.Encoding? encoding,
+    _i15.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -720,7 +902,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i14.Encoding? encoding,
+    _i15.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -757,7 +939,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i10.Future<String>.value(_i15.dummyValue<String>(
+        returnValue: _i10.Future<String>.value(_i16.dummyValue<String>(
           this,
           Invocation.method(
             #read,
@@ -768,7 +950,7 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
       ) as _i10.Future<String>);
 
   @override
-  _i10.Future<_i16.Uint8List> readBytes(
+  _i10.Future<_i17.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -778,8 +960,8 @@ class MockHttpClient extends _i1.Mock implements _i8.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i10.Future<_i16.Uint8List>.value(_i16.Uint8List(0)),
-      ) as _i10.Future<_i16.Uint8List>);
+        returnValue: _i10.Future<_i17.Uint8List>.value(_i17.Uint8List(0)),
+      ) as _i10.Future<_i17.Uint8List>);
 
   @override
   _i10.Future<_i8.StreamedResponse> send(_i8.BaseRequest? request) =>

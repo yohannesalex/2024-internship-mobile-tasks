@@ -8,6 +8,6 @@ class GetAllProductUsecase {
   final ProductRepository productRepository;
   GetAllProductUsecase(this.productRepository);
   Future<Either<Failure, List<ProductEntity>>> call() {
-    return productRepository.getAllProduct();
+    return productRepository.getAllProducts();
   }
 }

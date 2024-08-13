@@ -32,12 +32,12 @@ void main() {
 
   test('should get all products from the repository', () async {
     //arrange
-    when(mockProductRepository.getAllProduct())
+    when(mockProductRepository.getAllProducts())
         .thenAnswer((_) async => const Right(testProductdetail));
     //act
     final result = await getAllProductUsecase();
     //assert
     expect(result, const Right(testProductdetail));
-    verify(mockProductRepository.getAllProduct());
+    verify(mockProductRepository.getAllProducts());
   });
 }

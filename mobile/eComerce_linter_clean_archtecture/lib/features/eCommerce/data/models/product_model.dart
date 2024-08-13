@@ -29,4 +29,27 @@ class ProductModel extends ProductEntity {
       'price': price,
     };
   }
+
+  ProductEntity toEntity() => ProductEntity(
+      id: id,
+      category: category,
+      name: name,
+      description: description,
+      price: price,
+      imageUrl: imageUrl);
+
+  static List<ProductEntity> toEntityList(List<ProductModel> models) {
+    return models.map((model) => model.toEntity()).toList();
+  }
+
+  static ProductModel toModel(ProductEntity product) {
+    return ProductModel(
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+    );
+  }
 }

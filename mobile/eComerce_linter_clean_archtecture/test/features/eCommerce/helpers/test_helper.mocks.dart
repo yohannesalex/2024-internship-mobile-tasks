@@ -3,19 +3,28 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
-import 'dart:convert' as _i8;
-import 'dart:typed_data' as _i10;
+import 'dart:async' as _i9;
+import 'dart:convert' as _i13;
+import 'dart:typed_data' as _i15;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:http/http.dart' as _i3;
+import 'package:http/http.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i9;
-import 'package:my_project_name/core/error/failure.dart' as _i6;
-import 'package:my_project_name/features/eCommerce/domain/entities/product.dart'
-    as _i7;
-import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart'
+import 'package:mockito/src/dummies.dart' as _i14;
+import 'package:my_project_name/core/error/failure.dart' as _i10;
+import 'package:my_project_name/core/platform/network_info.dart' as _i6;
+import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_source.dart'
+    as _i5;
+import 'package:my_project_name/features/eCommerce/data/data_sources/remote_data_source.dart'
     as _i4;
+import 'package:my_project_name/features/eCommerce/data/models/product_model.dart'
+    as _i3;
+import 'package:my_project_name/features/eCommerce/data/repositories/product_repository_impl.dart'
+    as _i12;
+import 'package:my_project_name/features/eCommerce/domain/entities/product.dart'
+    as _i11;
+import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart'
+    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -40,8 +49,8 @@ class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
         );
 }
 
-class _FakeResponse_1 extends _i1.SmartFake implements _i3.Response {
-  _FakeResponse_1(
+class _FakeProductModel_1 extends _i1.SmartFake implements _i3.ProductModel {
+  _FakeProductModel_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -50,9 +59,51 @@ class _FakeResponse_1 extends _i1.SmartFake implements _i3.Response {
         );
 }
 
-class _FakeStreamedResponse_2 extends _i1.SmartFake
-    implements _i3.StreamedResponse {
-  _FakeStreamedResponse_2(
+class _FakeProductRemoteDataSource_2 extends _i1.SmartFake
+    implements _i4.ProductRemoteDataSource {
+  _FakeProductRemoteDataSource_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeProductLocalDataSource_3 extends _i1.SmartFake
+    implements _i5.ProductLocalDataSource {
+  _FakeProductLocalDataSource_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeNetworkInfo_4 extends _i1.SmartFake implements _i6.NetworkInfo {
+  _FakeNetworkInfo_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeResponse_5 extends _i1.SmartFake implements _i7.Response {
+  _FakeResponse_5(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeStreamedResponse_6 extends _i1.SmartFake
+    implements _i7.StreamedResponse {
+  _FakeStreamedResponse_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -64,13 +115,13 @@ class _FakeStreamedResponse_2 extends _i1.SmartFake
 /// A class which mocks [ProductRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockProductRepository extends _i1.Mock implements _i4.ProductRepository {
+class MockProductRepository extends _i1.Mock implements _i8.ProductRepository {
   MockProductRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, _i7.ProductEntity>> getCurrentProduct(
+  _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>> getCurrentProduct(
           String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -78,98 +129,340 @@ class MockProductRepository extends _i1.Mock implements _i4.ProductRepository {
           [productId],
         ),
         returnValue:
-            _i5.Future<_i2.Either<_i6.Failure, _i7.ProductEntity>>.value(
-                _FakeEither_0<_i6.Failure, _i7.ProductEntity>(
+            _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>>.value(
+                _FakeEither_0<_i10.Failure, _i11.ProductEntity>(
           this,
           Invocation.method(
             #getCurrentProduct,
             [productId],
           ),
         )),
-      ) as _i5.Future<_i2.Either<_i6.Failure, _i7.ProductEntity>>);
+      ) as _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>>);
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, void>> addProduct(
-          _i7.ProductEntity? product) =>
+  _i9.Future<_i2.Either<_i10.Failure, void>> addProduct(
+          _i11.ProductEntity? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #addProduct,
           [product],
         ),
-        returnValue: _i5.Future<_i2.Either<_i6.Failure, void>>.value(
-            _FakeEither_0<_i6.Failure, void>(
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
           this,
           Invocation.method(
             #addProduct,
             [product],
           ),
         )),
-      ) as _i5.Future<_i2.Either<_i6.Failure, void>>);
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, void>> deleteProduct(String? productId) =>
+  _i9.Future<_i2.Either<_i10.Failure, void>> deleteProduct(String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteProduct,
           [productId],
         ),
-        returnValue: _i5.Future<_i2.Either<_i6.Failure, void>>.value(
-            _FakeEither_0<_i6.Failure, void>(
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
           this,
           Invocation.method(
             #deleteProduct,
             [productId],
           ),
         )),
-      ) as _i5.Future<_i2.Either<_i6.Failure, void>>);
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, void>> editProduct(
-          _i7.ProductEntity? product) =>
+  _i9.Future<_i2.Either<_i10.Failure, void>> editProduct(
+          _i11.ProductEntity? product) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProduct,
           [product],
         ),
-        returnValue: _i5.Future<_i2.Either<_i6.Failure, void>>.value(
-            _FakeEither_0<_i6.Failure, void>(
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
           this,
           Invocation.method(
             #editProduct,
             [product],
           ),
         )),
-      ) as _i5.Future<_i2.Either<_i6.Failure, void>>);
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, List<_i7.ProductEntity>>>
-      getAllProduct() => (super.noSuchMethod(
+  _i9.Future<_i2.Either<_i10.Failure, List<_i11.ProductEntity>>>
+      getAllProducts() => (super.noSuchMethod(
             Invocation.method(
-              #getAllProduct,
+              #getAllProducts,
               [],
             ),
-            returnValue: _i5
-                .Future<_i2.Either<_i6.Failure, List<_i7.ProductEntity>>>.value(
-                _FakeEither_0<_i6.Failure, List<_i7.ProductEntity>>(
+            returnValue: _i9.Future<
+                    _i2.Either<_i10.Failure, List<_i11.ProductEntity>>>.value(
+                _FakeEither_0<_i10.Failure, List<_i11.ProductEntity>>(
               this,
               Invocation.method(
-                #getAllProduct,
+                #getAllProducts,
                 [],
               ),
             )),
-          ) as _i5.Future<_i2.Either<_i6.Failure, List<_i7.ProductEntity>>>);
+          ) as _i9.Future<_i2.Either<_i10.Failure, List<_i11.ProductEntity>>>);
+}
+
+/// A class which mocks [ProductRemoteDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockProductRemoteDataSource extends _i1.Mock
+    implements _i4.ProductRemoteDataSource {
+  MockProductRemoteDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<_i3.ProductModel> getCurrentProduct(String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCurrentProduct,
+          [productId],
+        ),
+        returnValue: _i9.Future<_i3.ProductModel>.value(_FakeProductModel_1(
+          this,
+          Invocation.method(
+            #getCurrentProduct,
+            [productId],
+          ),
+        )),
+      ) as _i9.Future<_i3.ProductModel>);
+
+  @override
+  _i9.Future<void> addProduct(_i11.ProductEntity? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addProduct,
+          [product],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> deleteProduct(String? productId) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteProduct,
+          [productId],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<void> editProduct(_i11.ProductEntity? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProduct,
+          [product],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+
+  @override
+  _i9.Future<List<_i3.ProductModel>> getAllProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue:
+            _i9.Future<List<_i3.ProductModel>>.value(<_i3.ProductModel>[]),
+      ) as _i9.Future<List<_i3.ProductModel>>);
+}
+
+/// A class which mocks [ProductLocalDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockProductLocalDataSource extends _i1.Mock
+    implements _i5.ProductLocalDataSource {
+  MockProductLocalDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<List<_i3.ProductModel>> getAllProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue:
+            _i9.Future<List<_i3.ProductModel>>.value(<_i3.ProductModel>[]),
+      ) as _i9.Future<List<_i3.ProductModel>>);
+
+  @override
+  _i9.Future<void> cacheAllProducts(List<_i3.ProductModel>? producToCache) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #cacheAllProducts,
+          [producToCache],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
+}
+
+/// A class which mocks [NetworkInfo].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNetworkInfo extends _i1.Mock implements _i6.NetworkInfo {
+  MockNetworkInfo() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.Future<bool> get isConnected => (super.noSuchMethod(
+        Invocation.getter(#isConnected),
+        returnValue: _i9.Future<bool>.value(false),
+      ) as _i9.Future<bool>);
+}
+
+/// A class which mocks [ProductRepositoryImpl].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockProductRepositoryImpl extends _i1.Mock
+    implements _i12.ProductRepositoryImpl {
+  MockProductRepositoryImpl() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.ProductRemoteDataSource get productRemoteDataSource =>
+      (super.noSuchMethod(
+        Invocation.getter(#productRemoteDataSource),
+        returnValue: _FakeProductRemoteDataSource_2(
+          this,
+          Invocation.getter(#productRemoteDataSource),
+        ),
+      ) as _i4.ProductRemoteDataSource);
+
+  @override
+  _i5.ProductLocalDataSource get productLocalDataSource => (super.noSuchMethod(
+        Invocation.getter(#productLocalDataSource),
+        returnValue: _FakeProductLocalDataSource_3(
+          this,
+          Invocation.getter(#productLocalDataSource),
+        ),
+      ) as _i5.ProductLocalDataSource);
+
+  @override
+  _i6.NetworkInfo get networkInfo => (super.noSuchMethod(
+        Invocation.getter(#networkInfo),
+        returnValue: _FakeNetworkInfo_4(
+          this,
+          Invocation.getter(#networkInfo),
+        ),
+      ) as _i6.NetworkInfo);
+
+  @override
+  _i9.Future<_i2.Either<_i10.Failure, void>> addProduct(
+          _i11.ProductEntity? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addProduct,
+          [product],
+        ),
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
+          this,
+          Invocation.method(
+            #addProduct,
+            [product],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
+
+  @override
+  _i9.Future<_i2.Either<_i10.Failure, void>> deleteProduct(String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteProduct,
+          [productId],
+        ),
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
+          this,
+          Invocation.method(
+            #deleteProduct,
+            [productId],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
+
+  @override
+  _i9.Future<_i2.Either<_i10.Failure, void>> editProduct(
+          _i11.ProductEntity? product) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProduct,
+          [product],
+        ),
+        returnValue: _i9.Future<_i2.Either<_i10.Failure, void>>.value(
+            _FakeEither_0<_i10.Failure, void>(
+          this,
+          Invocation.method(
+            #editProduct,
+            [product],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i10.Failure, void>>);
+
+  @override
+  _i9.Future<_i2.Either<_i10.Failure, List<_i11.ProductEntity>>>
+      getAllProducts() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllProducts,
+              [],
+            ),
+            returnValue: _i9.Future<
+                    _i2.Either<_i10.Failure, List<_i11.ProductEntity>>>.value(
+                _FakeEither_0<_i10.Failure, List<_i11.ProductEntity>>(
+              this,
+              Invocation.method(
+                #getAllProducts,
+                [],
+              ),
+            )),
+          ) as _i9.Future<_i2.Either<_i10.Failure, List<_i11.ProductEntity>>>);
+
+  @override
+  _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>> getCurrentProduct(
+          String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCurrentProduct,
+          [productId],
+        ),
+        returnValue:
+            _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>>.value(
+                _FakeEither_0<_i10.Failure, _i11.ProductEntity>(
+          this,
+          Invocation.method(
+            #getCurrentProduct,
+            [productId],
+          ),
+        )),
+      ) as _i9.Future<_i2.Either<_i10.Failure, _i11.ProductEntity>>);
 }
 
 /// A class which mocks [Client].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHttpClient extends _i1.Mock implements _i3.Client {
+class MockHttpClient extends _i1.Mock implements _i7.Client {
   MockHttpClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i3.Response> head(
+  _i9.Future<_i7.Response> head(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -179,7 +472,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #head,
@@ -187,10 +480,10 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             {#headers: headers},
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<_i3.Response> get(
+  _i9.Future<_i7.Response> get(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -200,7 +493,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #get,
@@ -208,14 +501,14 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             {#headers: headers},
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<_i3.Response> post(
+  _i9.Future<_i7.Response> post(
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i8.Encoding? encoding,
+    _i13.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -227,7 +520,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             #encoding: encoding,
           },
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #post,
@@ -239,14 +532,14 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             },
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<_i3.Response> put(
+  _i9.Future<_i7.Response> put(
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i8.Encoding? encoding,
+    _i13.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -258,7 +551,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             #encoding: encoding,
           },
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #put,
@@ -270,14 +563,14 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             },
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<_i3.Response> patch(
+  _i9.Future<_i7.Response> patch(
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i8.Encoding? encoding,
+    _i13.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -289,7 +582,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             #encoding: encoding,
           },
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #patch,
@@ -301,14 +594,14 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             },
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<_i3.Response> delete(
+  _i9.Future<_i7.Response> delete(
     Uri? url, {
     Map<String, String>? headers,
     Object? body,
-    _i8.Encoding? encoding,
+    _i13.Encoding? encoding,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -320,7 +613,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             #encoding: encoding,
           },
         ),
-        returnValue: _i5.Future<_i3.Response>.value(_FakeResponse_1(
+        returnValue: _i9.Future<_i7.Response>.value(_FakeResponse_5(
           this,
           Invocation.method(
             #delete,
@@ -332,10 +625,10 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             },
           ),
         )),
-      ) as _i5.Future<_i3.Response>);
+      ) as _i9.Future<_i7.Response>);
 
   @override
-  _i5.Future<String> read(
+  _i9.Future<String> read(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -345,7 +638,7 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i5.Future<String>.value(_i9.dummyValue<String>(
+        returnValue: _i9.Future<String>.value(_i14.dummyValue<String>(
           this,
           Invocation.method(
             #read,
@@ -353,10 +646,10 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
             {#headers: headers},
           ),
         )),
-      ) as _i5.Future<String>);
+      ) as _i9.Future<String>);
 
   @override
-  _i5.Future<_i10.Uint8List> readBytes(
+  _i9.Future<_i15.Uint8List> readBytes(
     Uri? url, {
     Map<String, String>? headers,
   }) =>
@@ -366,25 +659,25 @@ class MockHttpClient extends _i1.Mock implements _i3.Client {
           [url],
           {#headers: headers},
         ),
-        returnValue: _i5.Future<_i10.Uint8List>.value(_i10.Uint8List(0)),
-      ) as _i5.Future<_i10.Uint8List>);
+        returnValue: _i9.Future<_i15.Uint8List>.value(_i15.Uint8List(0)),
+      ) as _i9.Future<_i15.Uint8List>);
 
   @override
-  _i5.Future<_i3.StreamedResponse> send(_i3.BaseRequest? request) =>
+  _i9.Future<_i7.StreamedResponse> send(_i7.BaseRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #send,
           [request],
         ),
         returnValue:
-            _i5.Future<_i3.StreamedResponse>.value(_FakeStreamedResponse_2(
+            _i9.Future<_i7.StreamedResponse>.value(_FakeStreamedResponse_6(
           this,
           Invocation.method(
             #send,
             [request],
           ),
         )),
-      ) as _i5.Future<_i3.StreamedResponse>);
+      ) as _i9.Future<_i7.StreamedResponse>);
 
   @override
   void close() => super.noSuchMethod(

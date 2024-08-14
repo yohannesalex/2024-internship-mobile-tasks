@@ -17,14 +17,12 @@ void main() {
     ProductEntity(
         id: '1',
         name: 'Nike',
-        category: 'Shoes',
         description: 'brand new nike airforce',
         price: 23.4,
         imageUrl: 'imageUrl'),
     ProductEntity(
         id: '2',
         name: 'Adidas',
-        category: 'Shoes',
         description: 'brand new adidas easy',
         price: 23.4,
         imageUrl: 'imageUrl')

@@ -10,14 +10,12 @@ void main() {
   const testProductModel = ProductModel(
       id: '1',
       name: 'item 1',
-      category: 'category 1',
       description: 'item 2 description',
       price: 19.0,
       imageUrl: 'item 1.jpg');
   final expectedJson = {
     'id': '1',
     'name': 'item 1',
-    'category': 'category 1',
     'price': 19.0,
     'description': 'item 2 description',
     'imageUrl': 'item 1.jpg'

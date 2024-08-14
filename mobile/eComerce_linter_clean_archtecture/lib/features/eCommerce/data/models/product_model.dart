@@ -4,7 +4,6 @@ class ProductModel extends ProductEntity {
   const ProductModel(
       {required super.id,
       required super.name,
-      required super.category,
       required super.description,
       required super.price,
       required super.imageUrl});
@@ -12,7 +11,6 @@ class ProductModel extends ProductEntity {
     return ProductModel(
       id: json['id'],
       name: json['name'],
-      category: json['category'],
       description: json['description'],
       price: (json['price'] as num).toDouble(),
       imageUrl: json['imageUrl'],
@@ -27,7 +25,6 @@ class ProductModel extends ProductEntity {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'category': category,
       'name': name,
       'description': description,
       'imageUrl': imageUrl,
@@ -37,7 +34,6 @@ class ProductModel extends ProductEntity {
 
   ProductEntity toEntity() => ProductEntity(
       id: id,
-      category: category,
       name: name,
       description: description,
       price: price,
@@ -51,7 +47,6 @@ class ProductModel extends ProductEntity {
     return ProductModel(
       id: product.id,
       name: product.name,
-      category: product.category,
       description: product.description,
       price: product.price,
       imageUrl: product.imageUrl,

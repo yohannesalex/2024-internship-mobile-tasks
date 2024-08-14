@@ -1,12 +1,12 @@
+import 'package:dartz/dartz.dart';
 import '../../../../core/error/exeptions.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/network/network_info.dart';
 import '../../domain/entities/product.dart';
-import 'package:dartz/dartz.dart';
-import '../models/product_model.dart';
 import '../../domain/repositories/product_repository.dart';
 import '../data_sources/local_data_source.dart';
 import '../data_sources/remote_data_source.dart';
+import '../models/product_model.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final ProductRemoteDataSource productRemoteDataSource;

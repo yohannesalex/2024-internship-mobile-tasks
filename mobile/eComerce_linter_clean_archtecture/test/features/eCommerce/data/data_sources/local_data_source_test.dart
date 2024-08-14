@@ -55,10 +55,10 @@ void main() {
     const testProductModelList = [
       ProductModel(
           id: '1',
-          name: 'Test Pineapple',
-          description: 'A yellow pineapple for the summer',
-          imageUrl: 'pineapple.jpg',
-          price: 5.33)
+          name: 'Test shoes',
+          description: 'A brand nike for the summer',
+          imageUrl: 'nike.jpg',
+          price: 15.33)
     ];
 
     test('should call SharedPreference to cache the data', () {
@@ -69,7 +69,7 @@ void main() {
           .thenAnswer((_) async => true);
 
       //act
-      localDataSourceImpl.cacheAllProducts(testProductModelList);
+      dataSource.cacheAllProducts(testProductModelList);
 
       //assert
 

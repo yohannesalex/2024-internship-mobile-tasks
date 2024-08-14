@@ -16,7 +16,6 @@ void main() {
   const testProductdetail = ProductEntity(
       id: '1',
       name: 'Nike',
-      category: 'Shoes',
       description: 'brand new nike aiforce',
       price: 23.4,
       imageUrl: 'imageUrl');

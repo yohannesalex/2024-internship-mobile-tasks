@@ -28,7 +28,6 @@ void main() {
   const testProductModel = ProductModel(
     id: '1',
     name: 'nike',
-    category: 'shoes',
     description: 'sportShoes',
     price: 23.4,
     imageUrl: 'imageUrl',
@@ -38,7 +37,6 @@ void main() {
     ProductModel(
       id: '1',
       name: 'nike',
-      category: 'shoes',
       description: 'sportShoes',
       price: 23.4,
       imageUrl: 'imageUrl',
@@ -46,7 +44,6 @@ void main() {
     ProductModel(
       id: '1',
       name: 'nike',
-      category: 'shoes',
       description: 'sportShoes',
       price: 23.4,
       imageUrl: 'imageUrl',
@@ -56,7 +53,6 @@ void main() {
     ProductEntity(
       id: '1',
       name: 'nike',
-      category: 'shoes',
       description: 'sportShoes',
       price: 23.4,
       imageUrl: 'imageUrl',
@@ -64,7 +60,6 @@ void main() {
     ProductEntity(
       id: '1',
       name: 'nike',
-      category: 'shoes',
       description: 'sportShoes',
       price: 23.4,
       imageUrl: 'imageUrl',

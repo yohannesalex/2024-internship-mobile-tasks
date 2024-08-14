@@ -65,12 +65,21 @@ void main() {
       imageUrl: 'imageUrl',
     )
   ];
+  void deviceOnline() {
+    setUp(() {
+      when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+    });
+  }
+
+  void deviceOffline() {
+    setUp(() {
+      when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
+    });
+  }
 
   group('getCurrentProduct', () {
     group('device is online', () {
-      setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+      deviceOnline();
 
       test(
           'should return a product when a call to the remote data source is successful',
@@ -100,9 +109,7 @@ void main() {
 
       group('device is ofline', () {
         // This setUp applies only to the 'device is online' group
-        setUp(() {
-          when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
-        });
+        deviceOffline();
 
         test('should return connection failure when the device has no internet',
             () async {
@@ -120,9 +127,7 @@ void main() {
   });
   group('getAllProduct', () {
     group('device is online', () {
-      setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+      deviceOnline();
 
       test(
           'should return a list of products when a call to the remote data source is successful',
@@ -171,9 +176,7 @@ void main() {
 
       group('device is offline', () {
         // This setUp applies only to the 'device is online' group
-        setUp(() {
-          when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
-        });
+        deviceOffline();
         test('should return cached products when no network is available',
             () async {
           //arrange
@@ -205,9 +208,7 @@ void main() {
   });
   group('createProduct', () {
     group('device is online', () {
-      setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+      deviceOnline();
 
       test(
           'should return null when a call to the remote data source is successful',
@@ -237,9 +238,7 @@ void main() {
 
       group('device is ofline', () {
         // This setUp applies only to the 'device is online' group
-        setUp(() {
-          when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
-        });
+        deviceOffline();
 
         test('should return connection failure when the device has no internet',
             () async {
@@ -257,9 +256,7 @@ void main() {
   });
   group('editProduct', () {
     group('device is online', () {
-      setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+      deviceOnline();
 
       test(
           'should return null when a call to the remote data source is successful',
@@ -289,9 +286,7 @@ void main() {
 
       group('device is ofline', () {
         // This setUp applies only to the 'device is online' group
-        setUp(() {
-          when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
-        });
+        deviceOffline();
 
         test('should return connection failure when the device has no internet',
             () async {
@@ -309,9 +304,7 @@ void main() {
   });
   group('deleteProduct', () {
     group('device is online', () {
-      setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      });
+      deviceOnline();
 
       test(
           'should return null when a call to the remote data source is successful',
@@ -341,9 +334,7 @@ void main() {
 
       group('device is ofline', () {
         // This setUp applies only to the 'device is online' group
-        setUp(() {
-          when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
-        });
+        deviceOffline();
 
         test('should return connection failure when the device has no internet',
             () async {

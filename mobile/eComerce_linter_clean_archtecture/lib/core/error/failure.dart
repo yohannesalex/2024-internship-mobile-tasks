@@ -12,3 +12,5 @@ class CacheFailure extends Failure {}
 class SocketFailure extends Failure {}
 
 class ConnectionFailure extends Failure {}
+
+class InvalidInputFailure extends Failure {}

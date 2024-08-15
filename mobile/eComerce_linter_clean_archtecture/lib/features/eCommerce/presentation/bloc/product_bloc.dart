@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -11,7 +10,6 @@ import '../../domain/usecases/delete_product.dart';
 import '../../domain/usecases/edit_product.dart';
 import '../../domain/usecases/get_all_product.dart';
 import '../../domain/usecases/get_current_product.dart';
-import '../../../../core/usecase/usecase.dart';
 part 'product_event.dart';
 part 'product_state.dart';
 

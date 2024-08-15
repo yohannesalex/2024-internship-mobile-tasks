@@ -2,22 +2,24 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failure.dart';
+import '../../../../core/usecase/usecase.dart';
 import '../entities/product.dart';
 import '../repositories/product_repository.dart';
 
-class AddProductUsecase {
+class AddProductUsecase implements UseCase<void, AddParams> {
   final ProductRepository productRepository;
   AddProductUsecase(this.productRepository);
 
-  Future<Either<Failure, void>> call(Params params) {
-    return productRepository.addProduct(params.product);
+  @override
+  Future<Either<Failure, void>> call(AddParams addparams) async {
+    return await productRepository.addProduct(addparams.product);
   }
 }
 
-class Params extends Equatable {
+class AddParams extends Equatable {
   final ProductEntity product;
 
-  const Params({required this.product});
+  const AddParams({required this.product});
   @override
   List<Object?> get props => [product];
 }

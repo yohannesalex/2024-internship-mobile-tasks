@@ -26,8 +26,8 @@ void main() {
     when(mockProductRepository.getCurrentProduct(any))
         .thenAnswer((_) async => const Right(testProductdetail));
     //act
-    final result =
-        await getCurrentProductUsecase(const Params(productId: testProductId));
+    final result = await getCurrentProductUsecase(
+        const CurrentParams(productId: testProductId));
     //assert
     expect(result, const Right(testProductdetail));
     verify(mockProductRepository.getCurrentProduct(testProductId));

@@ -33,7 +33,7 @@ void main() {
         .thenAnswer((_) async => const Right(updatedTestProductDetail));
     //act
     final result =
-        await editProductUsecase(const Params(product: testProductdetail));
+        await editProductUsecase(const EditParams(product: testProductdetail));
     //assert
     expect(result, const Right(updatedTestProductDetail));
     verify(mockProductRepository.editProduct(testProductdetail));

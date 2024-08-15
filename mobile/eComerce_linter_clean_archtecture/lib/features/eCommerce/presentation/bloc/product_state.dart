@@ -11,10 +11,12 @@ class InitialState extends ProductState {}
 
 class LoadingState extends ProductState {}
 
-class LoadedAllProductState extends ProductState {
-  final ProductEntity product;
+class SuccessState extends ProductState {}
 
-  const LoadedAllProductState({required this.product});
+class LoadedAllProductState extends ProductState {
+  final List<ProductEntity> productList;
+
+  const LoadedAllProductState({required this.productList});
 }
 
 class LoadedSingleProductState extends ProductState {

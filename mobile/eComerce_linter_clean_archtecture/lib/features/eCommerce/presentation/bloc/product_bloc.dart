@@ -1,45 +1,86 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
 
-import '../../../../core/utils/input_converter.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/usecases/add_product.dart';
+
 import '../../domain/usecases/delete_product.dart';
 import '../../domain/usecases/edit_product.dart';
 import '../../domain/usecases/get_all_product.dart';
 import '../../domain/usecases/get_current_product.dart';
-
+import '../../../../core/usecase/usecase.dart';
 part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final GetCurrentProductUsecase getCurrentProductUsecase;
-  final GetAllProductUsecase getAllProductUsecase;
-  final InputConverter inputConverter;
-  final DeleteProductUsecase deleteProductUsecase;
-  final AddProductUsecase addProductUsecase;
-  final EditProductUsecase editProductUsecase;
+  final GetCurrentProductUsecase _getCurrentProductUsecase;
+  final GetAllProductUsecase _getAllProductUsecase;
+  final DeleteProductUsecase _deleteProductUsecase;
+  final AddProductUsecase _addProductUsecase;
+  final EditProductUsecase _editProductUsecase;
 
   ProductBloc(
-    super.initialState, {
-    required GetCurrentProductUsecase current,
-    required GetAllProductUsecase all,
-    required EditProductUsecase edit,
-    required DeleteProductUsecase delete,
-    required AddProductUsecase add,
-    required this.inputConverter,
-  })  : getCurrentProductUsecase = current,
-        getAllProductUsecase = all,
-        editProductUsecase = edit,
-        deleteProductUsecase = delete,
-        addProductUsecase = add;
-
-  @override
-  ProductState get initialState => InitialState();
-
-  @override
-  Stream<ProductState> mapEventToState(ProductEvent event) async* {
-    // TODO: Add Logic
+    this._addProductUsecase,
+    this._getCurrentProductUsecase,
+    this._editProductUsecase,
+    this._deleteProductUsecase,
+    this._getAllProductUsecase,
+  ) : super(InitialState()) {
+    on<GetSingleProductEvent>((event, emit) async {
+      emit(LoadingState());
+      final result = await _getCurrentProductUsecase(
+          CurrentParams(productId: event.prodcutId));
+      result.fold((failure) {
+        emit(const ErrorState(message: 'unable to load'));
+      }, (data) {
+        emit(LoadedSingleProductState(product: data));
+      });
+    }, transformer: debounce(const Duration(milliseconds: 300)));
+    on<LoadAllProductEvent>((event, emit) async {
+      emit(LoadingState());
+      final result = await _getAllProductUsecase();
+      result.fold((failure) {
+        emit(const ErrorState(message: 'unable to load'));
+      }, (data) {
+        emit(LoadedAllProductState(productList: data));
+      });
+    });
+    on<UpdateProductEvent>((event, emit) async {
+      emit(LoadingState());
+      final result =
+          await _editProductUsecase(EditParams(product: event.product));
+      result.fold((failure) {
+        emit(const ErrorState(message: 'unable to load'));
+      }, (data) {
+        emit(SuccessState());
+      });
+    });
+    on<CreateProductEvent>((event, emit) async {
+      emit(LoadingState());
+      final result =
+          await _addProductUsecase(AddParams(product: event.product));
+      result.fold((failure) {
+        emit(const ErrorState(message: 'unable to load'));
+      }, (data) {
+        emit(SuccessState());
+      });
+    });
+    on<DeleteProductEvent>((event, emit) async {
+      emit(LoadingState());
+      final result =
+          await _deleteProductUsecase(DeleteParams(productId: event.prodcutId));
+      result.fold((failure) {
+        emit(const ErrorState(message: 'unable to load'));
+      }, (data) {
+        emit(SuccessState());
+      });
+    });
   }
+}
+
+EventTransformer<GetSingleProductEvent> debounce<T>(Duration duration) {
+  return (event, mapper) => event.debounceTime(duration).flatMap(mapper);
 }

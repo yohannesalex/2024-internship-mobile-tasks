@@ -26,7 +26,8 @@ void main() {
     when(mockProductRepository.addProduct(any))
         .thenAnswer((_) async => const Right(null));
     //act
-    final result = await addProductUsecase(testProductdetail);
+    final result =
+        await addProductUsecase(const Params(product: testProductdetail));
     //assert
     expect(result, const Right(null));
     verify(mockProductRepository.addProduct(testProductdetail));

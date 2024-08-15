@@ -32,7 +32,8 @@ void main() {
     when(mockProductRepository.editProduct(any))
         .thenAnswer((_) async => const Right(updatedTestProductDetail));
     //act
-    final result = await editProductUsecase(testProductdetail);
+    final result =
+        await editProductUsecase(const Params(product: testProductdetail));
     //assert
     expect(result, const Right(updatedTestProductDetail));
     verify(mockProductRepository.editProduct(testProductdetail));

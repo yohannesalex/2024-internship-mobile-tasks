@@ -40,6 +40,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<LoadAllProductEvent>((event, emit) async {
       emit(LoadingState());
       final result = await _getAllProductUsecase();
+
       result.fold((failure) {
         emit(const ErrorState(message: 'unable to load'));
       }, (data) {
@@ -50,6 +51,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(LoadingState());
       final result =
           await _editProductUsecase(EditParams(product: event.product));
+      print('i am here');
+      print(result);
       result.fold((failure) {
         emit(const ErrorState(message: 'unable to load'));
       }, (data) {

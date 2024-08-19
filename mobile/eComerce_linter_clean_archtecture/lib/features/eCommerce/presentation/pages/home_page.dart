@@ -18,8 +18,8 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(9),
-            child: Image.asset(
-              '../../../../../assets/son.jpg',
+            child: Image.network(
+              'https://wallpapers.com/images/hd/messi-pictures-jzykf84saw6wbkd6.jpg',
               width: 45,
               height: 55,
             ),
@@ -148,8 +148,8 @@ class Home extends StatelessWidget {
                 ),
               );
             } else if (state is ErrorState) {
-              return Center(
-                child: Text('Error: ${state.message}'),
+              return const Center(
+                child: Text('The products can not be loaded'),
               );
             } else {
               return const Center(

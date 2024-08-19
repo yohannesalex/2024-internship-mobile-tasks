@@ -89,9 +89,8 @@ void main() {
     // Act
     await tester.pumpWidget(TestWidget());
     await tester.tap(find.text('DELETE'));
-    await tester.pump(); // Trigger Snackbar
-    await tester.pumpAndSettle(); // Wait for Snackbar to appear
-
+    await tester.pump();
+    await tester.pumpAndSettle();
     // Assert
     expect(find.text('The Product is deleted'), findsOneWidget);
   });
@@ -101,7 +100,7 @@ void main() {
     // Arrange
     whenListen(
       mockProductBloc,
-      Stream<ProductState>.fromIterable([ErrorState(message: '')]),
+      Stream<ProductState>.fromIterable([const ErrorState(message: '')]),
       initialState: InitialState(),
     );
 

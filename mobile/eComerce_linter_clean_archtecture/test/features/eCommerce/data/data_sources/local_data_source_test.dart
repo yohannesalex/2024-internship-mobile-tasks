@@ -20,8 +20,8 @@ void main() {
     );
   });
   group('getAllProducts', () {
-    final jsonList = json.decode(
-        readJson('features/eCommerce/helpers/dummy_data/product_cached.json'));
+    final jsonList =
+        json.decode(readJson('helpers/dummy_data/product_cached.json'));
     final testProductModelList = ProductModel.fromJsonList(jsonList);
     const CACHED_PRODUCTS = 'CACHED_PRODUCTS';
     test(

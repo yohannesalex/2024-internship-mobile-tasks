@@ -19,14 +19,12 @@ void main() {
     dataSource = ProdcutRemoteDataSourceImpl(client: mockHttpClient);
   });
   const testProductId = '1';
-  final testProducutModel = ProductModel.fromJson(json.decode(readJson(
-      'features/eCommerce/helpers/dummy_data/dummy_product_entity_response.json')));
+  final testProducutModel = ProductModel.fromJson(json.decode(
+      readJson('helpers/dummy_data/dummy_product_entity_response.json')));
 
-  const jsonCurrentProduct =
-      'features/eCommerce/helpers/dummy_data/mock_product_api.json';
+  const jsonCurrentProduct = 'helpers/dummy_data/mock_product_api.json';
 
-  const jsonAllProducts =
-      'features/eCommerce/helpers/dummy_data/mock_productsList_api.json';
+  const jsonAllProducts = 'helpers/dummy_data/mock_productsList_api.json';
 
   group('getCurrentProduct', () {
     test('Should perform a get request on the URL with success code 200',
@@ -68,54 +66,6 @@ void main() {
           () => dataSource.getAllProducts(), throwsA(isA<ServerException>()));
     });
   });
-  // group('addProduct', () {
-  //   const productToAdd = ProductModel(
-  //     id: '1',
-  //     name: 'PC',
-  //     description: 'long description',
-  //     imageUrl: '',
-  //     price: 123,
-  //   );
-
-  //   test('should perform a POST request with multipart/form-data', () async {
-  //     // arrange
-  //     final mockResponse = http.StreamedResponse(
-  //       Stream.value(utf8.encode(json.encode({
-  //         'statusCode': 201,
-  //         'message': '',
-  //         'data': {
-  //           'id': '6672940692adcb386d593686',
-  //           'name': 'PC',
-  //           'description': 'long description',
-  //           'price': 123,
-  //           'imageUrl':
-  //               'https://res.cloudinary.com/g5-mobile-track/image/upload/v1718785031/images/zqfvuxrxhip7shikyyj4.png'
-  //         }
-  //       }))),
-  //       201,
-  //     );
-
-  //     when(mockHttpClient.send(any)).thenAnswer((_) async => mockResponse);
-
-  //     // act
-  //     await dataSource.addProduct(productToAdd);
-
-  //     // assert
-  //     verify(mockHttpClient.send(captureAny)).captured.single
-  //         as http.MultipartRequest;
-  //   });
-
-  //   test('should throw a ServerException if the response code is not 201',
-  //       () async {
-  //     // arrange
-  //     final mockResponse = http.StreamedResponse(Stream.value([]), 400);
-  //     when(mockHttpClient.send(any)).thenAnswer((_) async => mockResponse);
-
-  //     // act & assert
-  //     expect(() => dataSource.addProduct(productToAdd),
-  //         throwsA(isA<ServerException>()));
-  //   });
-  // });
 
   group('editProduct', () {
     final jsonBody = {

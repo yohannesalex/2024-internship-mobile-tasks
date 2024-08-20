@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:my_project_name/features/eCommerce/data/models/product_model.dart';
 import 'package:my_project_name/features/eCommerce/domain/entities/product.dart';
 
-import '../../helpers/read_json.dart';
+import '../../../../helpers/read_json.dart';
 
 void main() {
   const testProductModel = ProductModel(
@@ -26,8 +26,8 @@ void main() {
   });
 
   test('should return the valid model from the json', () async {
-    final Map<String, dynamic> jsonMap = json.decode(readJson(
-        'features/eCommerce/helpers/dummy_data/dummy_product_entity_response.json'));
+    final Map<String, dynamic> jsonMap = json.decode(
+        readJson('helpers/dummy_data/dummy_product_entity_response.json'));
     final result = ProductModel.fromJson(jsonMap);
     expect(testProductModel, result);
   });

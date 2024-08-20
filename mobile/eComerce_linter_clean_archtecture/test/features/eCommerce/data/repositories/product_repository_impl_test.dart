@@ -7,7 +7,7 @@ import 'package:my_project_name/features/eCommerce/data/models/product_model.dar
 import 'package:my_project_name/features/eCommerce/data/repositories/product_repository_impl.dart';
 import 'package:my_project_name/features/eCommerce/domain/entities/product.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late ProductRepositoryImpl repository;

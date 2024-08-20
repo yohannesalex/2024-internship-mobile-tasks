@@ -10,7 +10,7 @@ import 'package:my_project_name/features/eCommerce/domain/usecases/edit_product.
 import 'package:my_project_name/features/eCommerce/domain/usecases/get_current_product.dart';
 import 'package:my_project_name/features/eCommerce/presentation/bloc/product_bloc.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late ProductBloc productBloc;

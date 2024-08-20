@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:my_project_name/core/network/network_info.dart';
+import 'package:my_project_name/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_source.dart';
 import 'package:my_project_name/features/eCommerce/data/data_sources/remote_data_source.dart';
 import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart';
@@ -14,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @GenerateMocks(
   [
+    AuthRepository,
     ProductRepository,
     ProductRemoteDataSource,
     ProductLocalDataSource,
@@ -24,7 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
     GetAllProductUsecase,
     EditProductUsecase,
     DeleteProductUsecase,
-    AddProductUsecase
+    AddProductUsecase,
   ],
   customMocks: [MockSpec<http.Client>(as: #MockHttpClient)],
 )

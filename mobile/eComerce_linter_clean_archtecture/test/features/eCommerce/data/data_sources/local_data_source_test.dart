@@ -6,8 +6,8 @@ import 'package:my_project_name/core/error/exeptions.dart';
 import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_source.dart';
 import 'package:my_project_name/features/eCommerce/data/models/product_model.dart';
 
-import '../../helpers/read_json.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../../../helpers/read_json.dart';
+import '../../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late ProductLocalDataSourceImpl dataSource;

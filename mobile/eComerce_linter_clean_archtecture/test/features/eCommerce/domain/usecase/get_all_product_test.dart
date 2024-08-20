@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:my_project_name/features/eCommerce/domain/entities/product.dart';
 import 'package:my_project_name/features/eCommerce/domain/usecases/get_all_product.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late GetAllProductUsecase getAllProductUsecase;

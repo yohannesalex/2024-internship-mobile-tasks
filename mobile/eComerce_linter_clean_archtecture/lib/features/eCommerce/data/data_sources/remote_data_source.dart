@@ -40,7 +40,6 @@ class ProdcutRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<void> deleteProduct(String productId) async {
-    print("============the product Id is ===============$productId");
     final response = await client.delete(
       Uri.parse('${Uris.baseUrl}/$productId'),
       headers: {'Content-Type': 'application/json'},
@@ -53,7 +52,6 @@ class ProdcutRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<void> editProduct(ProductModel product) async {
-    print("=====================the product is ====================$product");
     final productId = product.id;
     final jsonBody = {
       'name': product.name,
@@ -66,7 +64,6 @@ class ProdcutRemoteDataSourceImpl implements ProductRemoteDataSource {
       headers: {'Content-Type': 'application/json'},
       body: json.encode(jsonBody),
     );
-    print("the status code is ${response.statusCode}");
     if (response.statusCode != 200) {
       throw ServerException();
     }

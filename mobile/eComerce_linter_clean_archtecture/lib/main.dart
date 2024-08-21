@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'bloc_observer.dart';
+import 'features/authentication/presentation/bloc/auth_bloc.dart';
 import 'features/eCommerce/domain/entities/product.dart';
 import 'features/eCommerce/presentation/bloc/product_bloc.dart';
 import 'features/eCommerce/presentation/pages/add_page.dart';
@@ -24,14 +25,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => ProductBloc(
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => ProductBloc(
               sl(),
               sl(),
               sl(),
               sl(),
               sl(),
             )..add(LoadAllProductEvent()),
+          ),
+          BlocProvider(
+            create: (context) => AuthBloc(
+              sl(),
+              sl(),
+              sl(),
+              sl(),
+            ),
+          ),
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',

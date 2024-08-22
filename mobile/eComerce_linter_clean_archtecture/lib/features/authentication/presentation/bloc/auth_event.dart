@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../domain/entity/getme_entity.dart';
-import '../domain/entity/login_entity.dart';
-import '../domain/entity/signup_entity.dart';
+import '../../domain/entity/getme_entity.dart';
+import '../../domain/entity/login_entity.dart';
+import '../../domain/entity/signup_entity.dart';
 
 @immutable
 abstract class AuthEvent extends Equatable {
@@ -15,13 +15,7 @@ abstract class AuthEvent extends Equatable {
 
 class LogOutEvent extends AuthEvent {}
 
-class GetMeEvent extends AuthEvent {
-  final GetMeEntity user;
-
-  const GetMeEvent(this.user);
-  @override
-  List<Object> get props => [user];
-}
+class GetMeEvent extends AuthEvent {}
 
 class SignUpEvent extends AuthEvent {
   final SignUpEntity user;

@@ -5,6 +5,10 @@ import 'package:my_project_name/core/network/network_info.dart';
 import 'package:my_project_name/features/authentication/data/resource/auth_local_data_source.dart';
 import 'package:my_project_name/features/authentication/data/resource/auth_remote_data_source.dart';
 import 'package:my_project_name/features/authentication/domain/repositories/auth_repository.dart';
+import 'package:my_project_name/features/authentication/domain/usecases/getme.dart';
+import 'package:my_project_name/features/authentication/domain/usecases/login.dart';
+import 'package:my_project_name/features/authentication/domain/usecases/logout.dart';
+import 'package:my_project_name/features/authentication/domain/usecases/sign_up.dart';
 import 'package:my_project_name/features/eCommerce/data/data_sources/local_data_source.dart';
 import 'package:my_project_name/features/eCommerce/data/data_sources/remote_data_source.dart';
 import 'package:my_project_name/features/eCommerce/domain/repositories/product_repository.dart';
@@ -26,6 +30,10 @@ import 'package:shared_preferences/shared_preferences.dart';
     NetworkInfo,
     InternetConnectionChecker,
     SharedPreferences,
+    GetMeUseCase,
+    LoginUseCase,
+    SignUpUseCase,
+    LogoutUseCase,
     GetCurrentProductUsecase,
     GetAllProductUsecase,
     EditProductUsecase,

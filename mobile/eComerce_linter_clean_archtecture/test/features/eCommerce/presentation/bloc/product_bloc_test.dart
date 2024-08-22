@@ -108,7 +108,7 @@ void main() {
       expect: () =>
           [LoadingState(), const ErrorState(message: 'Server Failure')]);
   blocTest<ProductBloc, ProductState>(
-      'should emit [Loading, SuccessState] oni edit event',
+      'should emit [Loading, SuccessState] on edit event',
       build: () {
         when(mockEditProductUsecase(
                 const EditParams(product: testProductdetail)))

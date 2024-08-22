@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'bloc_observer.dart';
 import 'features/authentication/presentation/bloc/auth_bloc.dart';
+import 'features/authentication/presentation/pages/login.dart';
+import 'features/authentication/presentation/pages/signup.dart';
+import 'features/authentication/presentation/pages/wellcome.dart';
 import 'features/eCommerce/domain/entities/product.dart';
 import 'features/eCommerce/presentation/bloc/product_bloc.dart';
 import 'features/eCommerce/presentation/pages/add_page.dart';
@@ -15,6 +18,7 @@ import 'injection_container.dart' as di;
 import 'injection_container.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
@@ -52,7 +56,13 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case '/':
+                return _buildPageRoute(const Wellcome());
+              case '/home':
                 return _buildPageRoute(Home());
+              case '/login':
+                return _buildPageRoute(Login());
+              case '/signup':
+                return _buildPageRoute(const SignUp());
               case '/details':
                 return _buildPageRoute(
                     const Detail(

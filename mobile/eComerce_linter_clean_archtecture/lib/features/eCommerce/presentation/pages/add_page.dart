@@ -8,9 +8,7 @@ import '../../domain/entities/product.dart';
 import '../bloc/product_bloc.dart';
 
 class Add extends StatefulWidget {
-  const Add({
-    super.key,
-  });
+  const Add({super.key});
 
   @override
   State<Add> createState() => _AddState();
@@ -18,15 +16,11 @@ class Add extends StatefulWidget {
 
 class _AddState extends State<Add> {
   final TextEditingController _nameController = TextEditingController();
-
   final TextEditingController _categoryController = TextEditingController();
-
   final TextEditingController _priceController = TextEditingController();
-
   final TextEditingController _descriptionController = TextEditingController();
 
   File? _image;
-
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage() async {
@@ -48,9 +42,7 @@ class _AddState extends State<Add> {
             child: Text(
           'Add Product',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
+          style: TextStyle(fontWeight: FontWeight.w500),
         )),
         leading: IconButton(
           icon: const Icon(
@@ -70,7 +62,7 @@ class _AddState extends State<Add> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('The Product is created Successfully')));
             context.read<ProductBloc>().add(LoadAllProductEvent());
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamed(context, '/home');
           } else if (state is ErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Failed to create a product')));
@@ -84,22 +76,25 @@ class _AddState extends State<Add> {
                 width: double.infinity,
                 height: 120,
                 color: const Color(0xFFF3F3F3),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(
-                        Icons.image,
-                        color: Colors.grey,
-                        size: 40,
+                child: _image == null
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconButton(
+                            icon: const Icon(
+                              Icons.image,
+                              color: Colors.grey,
+                              size: 40,
+                            ),
+                            onPressed: _pickImage,
+                          ),
+                          const Text('Upload Image')
+                        ],
+                      )
+                    : Image.file(
+                        _image!,
+                        fit: BoxFit.cover,
                       ),
-                      onPressed: () {
-                        _pickImage();
-                      },
-                    ),
-                    const Text('Upload Image')
-                  ],
-                ),
               ),
               Container(
                 margin:
@@ -109,9 +104,7 @@ class _AddState extends State<Add> {
                   children: [
                     const Text('name',
                         style: TextStyle(fontWeight: FontWeight.w500)),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     TextField(
                       controller: _nameController,
                       decoration: const InputDecoration(
@@ -130,13 +123,9 @@ class _AddState extends State<Add> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'category',
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const Text('category',
+                        style: TextStyle(fontWeight: FontWeight.w500)),
+                    const SizedBox(height: 5),
                     TextField(
                       controller: _categoryController,
                       decoration: const InputDecoration(
@@ -157,9 +146,7 @@ class _AddState extends State<Add> {
                   children: [
                     const Text('price',
                         style: TextStyle(fontWeight: FontWeight.w500)),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     TextField(
                       controller: _priceController,
                       decoration: const InputDecoration(
@@ -179,9 +166,7 @@ class _AddState extends State<Add> {
                   children: [
                     const Text('description',
                         style: TextStyle(fontWeight: FontWeight.w500)),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     TextField(
                       controller: _descriptionController,
                       maxLines: 5,
@@ -195,9 +180,7 @@ class _AddState extends State<Add> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 width: double.infinity,
@@ -221,8 +204,7 @@ class _AddState extends State<Add> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF3F51F3),
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(8.0), // Button shape
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     child: const Text(
@@ -231,15 +213,13 @@ class _AddState extends State<Add> {
                           fontWeight: FontWeight.w500, color: Colors.white),
                     )),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 width: double.infinity,
                 child: OutlinedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/home');
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.red),
@@ -253,9 +233,7 @@ class _AddState extends State<Add> {
                           fontWeight: FontWeight.w500, color: Colors.red),
                     )),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

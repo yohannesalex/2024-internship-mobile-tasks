@@ -57,6 +57,7 @@ dependencies:
   image_picker: ^1.1.2
   mocktail: ^1.0.4
   json_annotation: ^4.9.0
+  http_parser: ^4.0.2
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +83,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  
+  assets:
+    - assets/photo.png
+  fonts:
+    - family: CaveatBrush
+      fonts:
+        - asset: assets/fonts/CaveatBrush-Regular.ttf
+    
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

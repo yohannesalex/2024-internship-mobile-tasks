@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
+import '../../../authentication/presentation/bloc/auth_bloc.dart';
+import '../../../authentication/presentation/bloc/auth_event.dart';
+import '../../../authentication/presentation/bloc/auth_state.dart';
 import '../bloc/product_bloc.dart';
 import '../widget/card.dart';
 import 'details_page.dart';
 
 class Home extends StatelessWidget {
   final String _date = DateFormat('MMMM d, yyyy').format(DateTime.now());
-  Home({super.key});
+  Home({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
+    context.read<AuthBloc>().add(GetMeEvent());
+
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 70,
@@ -42,21 +50,45 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 2,
             ),
-            const Row(
+            Row(
               children: [
-                Text(
+                const Text(
                   'Hello, ',
                   style: TextStyle(color: Colors.black45, fontSize: 15),
                 ),
-                Text(
-                  'Yohannes',
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) {
+                    if (state is GetMeSuccessState) {
+                      return Text(
+                        state.user.name,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        ),
+                      );
+                    } else {
+                      return const Text('User');
+                    }
+                  },
                 )
               ],
             )
           ],
         ),
         actions: [
+          IconButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(LogOutEvent());
+              Navigator.pushNamed(context, '/login');
+            },
+            icon: const Icon(
+              Icons.logout,
+              size: 40,
+            ),
+          ),
+          const SizedBox(
+            width: 18,
+          ),
           Container(
               decoration: BoxDecoration(
                 border: Border.all(width: 2, color: Colors.grey.shade300),

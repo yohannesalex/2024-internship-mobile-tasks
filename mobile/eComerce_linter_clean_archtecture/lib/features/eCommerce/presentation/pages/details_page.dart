@@ -22,7 +22,7 @@ class Detail extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('The Product is deleted')));
             context.read<ProductBloc>().add(LoadAllProductEvent());
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamed(context, '/home');
           } else if (state is ErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Failed to delete the product')));

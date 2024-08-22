@@ -66,7 +66,7 @@ class Edit extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('The Product is Updated Successfully')));
                 context.read<ProductBloc>().add(LoadAllProductEvent());
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/home');
               } else if (state is ErrorState) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Failed to Update a product')));
